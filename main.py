@@ -1,7 +1,7 @@
 import sys
 import os
 import argparse
-import parser.py
+import parser
 #I love os
 
 sys.stdout.write("This is the math solver for the Algebra 2 Honors class.")
