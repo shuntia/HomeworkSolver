@@ -22,12 +22,21 @@ def parse(expr: str) -> List[Tuple[mpc, int]]:
 
 
 def parse_term(term: str) -> Tuple[mpc, mpc]:
-    tmp = term.split("*")
-    if len(tmp) == 1:
-        return (mpc(tmp[0]), 0)
-    else:
-        tmp2 = tmp[1].split("^")
-        if len(tmp2) == 1:
-            return (mpc(tmp[0]), 1)
+    x_idx = term.find("x")
+    if x_idx == -1:
+        return (mpc(term), 0)
+
+    if x_idx == 1:
+        if term[0] == "+":
+            coeff = mpc(1)
         else:
-            return (mpc(tmp[0]), int(tmp2[1]))
+            coeff = mpc(-1)
+    else:
+        coeff = mpc(term[:x_idx].strip("*"))
+    term = term[x_idx:]
+
+    *_, exp = term.split("^")
+    if exp == "x":
+        return (coeff, 1)
+    else:
+        return (coeff, int(exp))
