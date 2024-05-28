@@ -36,3 +36,7 @@ def solve(expr: List[Tuple[mpc, int]]):
         expr = divide.divide(expr, [(mpc(1), 1), (-x_root, 0)])
         if expr == None or (len(expr) == 1 and expr[0][1] == 0):
             return to_ret
+    raise Exception("Too many iterations.")
+
+def find_type(expr: List[Tuple[mpc, int]]):
+    pass

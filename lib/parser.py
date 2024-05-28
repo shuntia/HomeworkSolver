@@ -18,8 +18,22 @@ def parse(expr: str) -> List[Tuple[mpc, int]]:
     to_ret = []
     for i in terms:
         to_ret.append(parse_term(i))
-    return sorted(to_ret, key=lambda x: -x[1])
+    simplified=simplify(sorted(to_ret, key=lambda x: -x[1]))
+    return simplified
 
+def simplify(terms: List[Tuple[mpc, int]]) -> List[Tuple[mpc, int]]:
+    to_ret = []
+    to_append=mpc(0,0)
+    current_exponent=terms[0][1]
+    for i in terms:
+        if i[1]==current_exponent:
+            to_append+=i[0]
+        else:
+            to_ret.append([to_append, current_exponent])
+            current_exponent=i[1]
+            to_append=i[0]
+    to_ret.append([to_append, current_exponent])
+    return sorted(to_ret, key=lambda x: -x[1])
 
 def parse_term(term: str) -> Tuple[mpc, mpc]:
     x_idx = term.find("x")
