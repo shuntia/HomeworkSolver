@@ -23,6 +23,6 @@ expression = input("Please enter your expression/equasion to solve: ")
 parsedexpr = lib.parser.parse(expression)
 if(args.verbose):
     sys.stdout.write(str(parsedexpr)+"\n")
-# eqtype=solver.find_type(parsedexpr)
-solution = lib.solver.solve(parsedexpr)
+eqtype=lib.solver.find_type(parsedexpr)
+solution = lib.solver.solve(parsedexpr, eqtype)
 sys.stdout.write("Solution is: " + ", ".join([mpmath.nstr(i) for i in solution]) + "\n")
