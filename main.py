@@ -18,7 +18,14 @@ mpmath.mp.dps = 1000
 
 sys.stdout.write("This is the polynomial solver for the Algebra 2 Honors class.")
 pars = argparse.ArgumentParser()
-pars.add_argument("-v", "--verbose", help="increase output verbosity", required=False, action="store_true", default=False)
+pars.add_argument(
+    "-v",
+    "--verbose",
+    help="increase output verbosity",
+    required=False,
+    action="store_true",
+    default=False,
+)
 args = pars.parse_args()
 expression = input("Please enter your expression/equasion to solve: ")
 parsedexpr = lib.parser.parse(expression)
@@ -28,6 +35,6 @@ if(args.verbose):
 solution = lib.solver.solve(parsedexpr)
 sys.stdout.write(
     "Solutions are: \n\t"
-    + ", \n\t".join([lib.formatter.formatter(i) for i in solution])
+    + ", \n\t".join(list(set(lib.formatter.formatter(i) for i in solution)))
     + "\n"
 )
