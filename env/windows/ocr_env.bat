@@ -7,13 +7,13 @@ if errorlevel 1 (
 )
 
 REM Create a new directory for the virtual environment
-mkdir myenv
+mkdir homework-solver_env
 
 REM Create a virtual environment
-python -m venv myenv
+python -m venv homework-solver_env
 
 REM Activate the virtual environment
-call myenv\Scripts\activate
+call homework-solver_env\Scripts\activate
 
 REM Upgrade pip
 python -m pip install --upgrade pip

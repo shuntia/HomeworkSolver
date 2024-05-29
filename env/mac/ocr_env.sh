@@ -8,13 +8,13 @@ then
 fi
 
 # Create a new directory for the virtual environment
-mkdir -p myenv
+mkdir -p homework-solver_env
 
 # Create a virtual environment
-python3 -m venv myenv
+python3 -m venv homework-solver_env
 
 # Activate the virtual environment
-source myenv/bin/activate
+source homework-solver_env/bin/activate
 
 # Upgrade pip
 pip install --upgrade pip
