@@ -7,6 +7,7 @@ import lib.solver
 import lib.formatter
 import mpmath
 import os
+from ocr.recognization import recognize
 
 mpmath.mp.prec = 3333
 mpmath.mp.dps = 1000
@@ -23,7 +24,7 @@ pars.add_argument("-v", "--verbose", help="increase output verbosity", required=
 args = pars.parse_args()
 expression = input("Please enter your expression/equasion to solve, or enter a path to an image: ")
 if(os.path.isfile(expression)):
-    pass
+    expression = recognize(expression)
 #todo: add image recognition, output format will be in form x^2+2x+1
 parsedexpr = lib.parser.parse(expression)
 # eqtype=solver.find_type(parsedexpr)
