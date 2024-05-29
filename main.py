@@ -23,6 +23,8 @@ args = pars.parse_args()
 expression = input("Please enter your expression/equasion to solve: ")
 parsedexpr = lib.parser.parse(expression)
 # eqtype=solver.find_type(parsedexpr)
+if(args.verbose):
+    sys.stdout.write(str(parsedexpr)+"\n")
 solution = lib.solver.solve(parsedexpr)
 sys.stdout.write(
     "Solutions are: \n\t"
