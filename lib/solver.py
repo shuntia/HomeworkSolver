@@ -41,7 +41,7 @@ def solve(expr: poly, method: newton):
     to_ret = []
     for i in range(1000):
         # print(expr.polynomial)
-        if len(expr.polynomial) == 2 and expr[0][1] <= 1:
+        if len(expr.polynomial) == 2 and expr.polynomial[0][1] <= 1:
             to_ret.append(-expr.polynomial[1][0] / expr.polynomial[0][0])
             return to_ret
         x_root = newton_method(lambda x: calc.calc(expr.polynomial, x), mpc(1, 1))
@@ -50,7 +50,7 @@ def solve(expr: poly, method: newton):
         if abs(x_root.imag) < mpf("10") ** -20:
             x_root = mpc(x_root.real, 0)
         to_ret.append(x_root)
-        expr.polynomial = expr.polynomial/poly([(mpc(1), 1), (-x_root, 0)])
+        expr.polynomial = expr/poly([(mpc(1), 1), (-x_root, 0)])
         if expr.polynomial == None or (len(expr.polynomial) == 1 and expr.polynomial[0][1] == 0):
             return poly(to_ret)
     raise Exception("Too many iterations.")

@@ -26,13 +26,14 @@ class poly:
     def __str__(self):
         strexpr=""
         for i in self.polynomial:
+            strexpr+="("
             if i[0].real<0:
-                strexpr.append("-")
+                strexpr+="-"
             strexpr+=str(i[0].real)
             if i[0].imag<0:
-                strexpr.append("-")
+                strexpr+="-"
             else:
-                strexpr.append("+")
+                strexpr+="+"
             strexpr+=str(i[0].imag)+"i)"
             strexpr+="**"+str(i[1])
         return strexpr

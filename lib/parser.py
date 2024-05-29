@@ -1,8 +1,8 @@
 from mpmath import mpc
 from typing import *
+from lib.polynomial import poly
 
-
-def parse(expr: str) -> List[Tuple[mpc, int]]:
+def parse(expr: str) -> poly:
     if expr[0] != "+" and expr[0] != "-":
         expr = "+" + expr
     term_idx = []
@@ -15,25 +15,25 @@ def parse(expr: str) -> List[Tuple[mpc, int]]:
     for i in range(len(term_idx) - 1):
         terms.append(expr[term_idx[i] : term_idx[i + 1]])
 
-    to_ret = []
+    to_ret = poly([])
     for i in terms:
-        to_ret.append(parse_term(i))
-    simplified=simplify(sorted(to_ret, key=lambda x: -x[1]))
-    return simplified
+        to_ret.polynomial.append(parse_term(i))
+    simplified=simplify(poly(sorted(to_ret.polynomial, key=lambda x: -x[1])))
+    return poly(simplified)
 
-def simplify(terms: List[Tuple[mpc, int]]) -> List[Tuple[mpc, int]]:
-    to_ret = []
+def simplify(terms: poly) -> poly:
+    to_ret = poly([])
     to_append=mpc(0,0)
-    current_exponent=terms[0][1]
-    for i in terms:
+    current_exponent=terms.polynomial[0][1]
+    for i in terms.polynomial:
         if i[1]==current_exponent:
             to_append+=i[0]
         else:
-            to_ret.append([to_append, current_exponent])
+            to_ret.polynomial.append([to_append, current_exponent])
             current_exponent=i[1]
             to_append=i[0]
-    to_ret.append([to_append, current_exponent])
-    return sorted(to_ret, key=lambda x: -x[1])
+    to_ret.polynomial.append([to_append, current_exponent])
+    return sorted(to_ret.polynomial, key=lambda x: -x[1])
 
 def parse_term(term: str) -> Tuple[mpc, mpc]:
     x_idx = term.find("x")
