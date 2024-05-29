@@ -6,6 +6,7 @@ import lib.calc
 import lib.solver
 import lib.formatter
 import mpmath
+import os
 
 mpmath.mp.prec = 3333
 mpmath.mp.dps = 1000
@@ -20,7 +21,10 @@ sys.stdout.write("This is the polynomial solver for the Algebra 2 Honors class."
 pars = argparse.ArgumentParser()
 pars.add_argument("-v", "--verbose", help="increase output verbosity", required=False, action="store_true", default=False)
 args = pars.parse_args()
-expression = input("Please enter your expression/equasion to solve: ")
+expression = input("Please enter your expression/equasion to solve, or enter a path to an image: ")
+if(os.path.isfile(expression)):
+    pass
+#todo: add image recognition, output format will be in form x^2+2x+1
 parsedexpr = lib.parser.parse(expression)
 # eqtype=solver.find_type(parsedexpr)
 if(args.verbose):
