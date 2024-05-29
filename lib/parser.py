@@ -3,6 +3,7 @@ from typing import *
 
 
 def parse(expr: str) -> List[Tuple[mpc, int]]:
+    expr = expr.replace(" ", "")
     if expr[0] != "+" and expr[0] != "-":
         expr = "+" + expr
     term_idx = []

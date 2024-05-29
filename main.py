@@ -4,6 +4,7 @@ import argparse
 import lib.parser
 import lib.calc
 import lib.solver
+import lib.formatter
 import mpmath
 
 mpmath.mp.prec = 3333
@@ -23,4 +24,8 @@ expression = input("Please enter your expression/equasion to solve: ")
 parsedexpr = lib.parser.parse(expression)
 # eqtype=solver.find_type(parsedexpr)
 solution = lib.solver.solve(parsedexpr)
-sys.stdout.write("Solution is: " + ", ".join([mpmath.nstr(i) for i in solution]) + "\n")
+sys.stdout.write(
+    "Solutions are: \n\t"
+    + ", \n\t".join([lib.formatter.formatter(i) for i in solution])
+    + "\n"
+)
