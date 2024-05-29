@@ -35,6 +35,7 @@ def simplify(terms: poly) -> poly:
     to_ret.polynomial.append([to_append, current_exponent])
     return sorted(to_ret.polynomial, key=lambda x: -x[1])
 
+
 def parse_term(term: str) -> Tuple[mpc, mpc]:
     x_idx = term.find("x")
     if x_idx == -1:

@@ -4,6 +4,7 @@ import argparse
 import lib.parser
 import lib.calc
 import lib.solver
+import lib.formatter
 import mpmath
 
 mpmath.mp.prec = 3333
@@ -21,8 +22,10 @@ pars.add_argument("-v", "--verbose", help="increase output verbosity", required=
 args = pars.parse_args()
 expression = input("Please enter your expression/equasion to solve: ")
 parsedexpr = lib.parser.parse(expression)
-if(args.verbose):
-    sys.stdout.write(str(parsedexpr)+"\n")
-eqtype=lib.solver.find_type(parsedexpr)
-solution = lib.solver.solve(parsedexpr, eqtype)
-sys.stdout.write("Solution is: " + ", ".join([mpmath.nstr(i) for i in solution]) + "\n")
+# eqtype=solver.find_type(parsedexpr)
+solution = lib.solver.solve(parsedexpr)
+sys.stdout.write(
+    "Solutions are: \n\t"
+    + ", \n\t".join([lib.formatter.formatter(i) for i in solution])
+    + "\n"
+)
