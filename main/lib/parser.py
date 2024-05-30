@@ -1,6 +1,6 @@
 from mpmath import mpc
 from typing import *
-from lib.polynomial import poly
+from main.lib.polynomial import poly
 
 def parse(expr: str) -> poly:
     if expr[0] != "+" and expr[0] != "-":

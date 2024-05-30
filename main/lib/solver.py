@@ -1,9 +1,9 @@
-import lib.derivative as derivative
-import lib.calc as calc
-import lib.divide as divide
+import main.lib.derivative as derivative
+import main.lib.calc as calc
+import main.lib.divide as divide
 from mpmath import mpc, mpf, nprint
 from typing import *
-from lib.polynomial import *
+from main.lib.polynomial import *
 
 
 class newton:
