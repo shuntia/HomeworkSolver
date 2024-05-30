@@ -1,0 +1,5 @@
+gmpy2
+mpmath
+pix2text
+Pillow
+flask
