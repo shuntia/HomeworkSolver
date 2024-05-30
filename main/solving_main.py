@@ -1,10 +1,10 @@
 import sys
 import os
 import argparse
-import lib.parser
-import lib.calc
-import lib.solver
-import lib.formatter
+import main.lib.solver
+import main.lib.parser
+import main.lib.calc
+import main.lib.formatter
 import mpmath
 import os
 from main.recognization import recognize
@@ -26,13 +26,13 @@ def solving(expression):
 #    expression = input("Please enter your expression/equasion to solve, or enter a path to an image: ")
     if(os.path.isfile(expression)):
         expression = recognize(expression)
-    #todo: add image recognition, output format will be in form x^2+2x+1
-    parsedexpr = lib.parser.parse(expression)
+    parsedexpr = main.lib.parser.parse(expression)
     # eqtype=solver.find_type(parsedexpr)
 #    if(args.verbose):
 #        sys.stdout.write(str(parsedexpr)+"\n")
-    solution = lib.solver.solve(parsedexpr)
-    return solution
+    solution = main.lib.solver.solve(parsedexpr)
+
+    return [main.lib.formatter.formatter(i) for i in solution]
 '''
     sys.stdout.write(
         "Solutions are: \n\t"

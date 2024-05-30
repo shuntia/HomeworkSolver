@@ -21,7 +21,17 @@ def format_latex_to_readable(latex_str):
   # Match and replace {n} with n
   readable_str = re.sub(r'\{(\d+)\}', r'\1', readable_str)
   
+  # Add * around x to ensure multiplication
+  readable_str = re.sub(r'(\d)x', r'\1*x', readable_str)  # Add * between numbers and x
+  readable_str = re.sub(r'(\))x', r'\1*x', readable_str)  # Add * between parentheses and x
+  readable_str = re.sub(r'x(\d)', r'x*\1', readable_str)  # Add * between x and numbers
+  
   # Ensure the leading term with x is properly formatted
   readable_str = re.sub(r'([a-zA-Z])\*([a-zA-Z])', r'\1*\2', readable_str)
   
-  return readable_str
+  # Fix leading and trailing plus signs
+  readable_str = re.sub(r'^\+', '', readable_str)  # Remove leading plus sign
+  readable_str = re.sub(r'\+$', '', readable_str)  # Remove trailing plus sign
+  
+  # Ensure correct placement of minus signs
+  readable_str = readable_str.replace('+-', '-').replace('--', '+')
