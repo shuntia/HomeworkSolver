@@ -47,7 +47,7 @@ if(os.path.isfile(target)):
     sys.stdout.write("recognized: "+str(expression)+"\n")
 else:
     expression=target
-if "/" in expression or "\\" in expression or "." in expression:
+if "/" in expression or "\\" in expression:
     raise ValueError("File does not exist: " + expression)
 if "=" in expression:
     expression=expression[expression.find("=")+1:]
