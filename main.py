@@ -45,9 +45,10 @@ if(os.path.isfile(target)):
     from PIL import Image
     expression = recognition.recognize(target)
     sys.stdout.write("recognized: "+str(expression)+"\n")
-    
 else:
     expression=target
+if "/" in expression or "\\" in expression or "." in expression:
+    raise ValueError("File does not exist: " + expression)
 if "=" in expression:
     expression=expression[expression.find("=")+1:]
 parsedexpr = parser.parse(expression)
