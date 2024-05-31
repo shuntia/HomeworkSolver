@@ -57,5 +57,5 @@ def solve(expr: poly):
         if expr.polynomial == None or (
             len(expr.polynomial) == 1 and expr.polynomial[0][1] == 0
         ):
-            return poly(to_ret)
+            return to_ret
     raise Exception("Too many iterations.")
