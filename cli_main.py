@@ -1,10 +1,10 @@
 import sys
 import os
 import argparse
-import lib.parser
-import lib.calc
-import lib.solver
-import lib.formatter
+import main.lib.parser
+import main.lib.calc
+import main.lib.solver
+import main.lib.formatter
 import mpmath
 
 mpmath.mp.prec = 3333
@@ -28,13 +28,13 @@ pars.add_argument(
 )
 args = pars.parse_args()
 expression = input("Please enter your expression/equasion to solve: ")
-parsedexpr = lib.parser.parse(expression)
+parsedexpr = main.lib.parser.parse(expression)
 # eqtype=solver.find_type(parsedexpr)
 if(args.verbose):
     sys.stdout.write(str(parsedexpr)+"\n")
-solution = lib.solver.solve(parsedexpr)
+solution = main.lib.solver.solve(parsedexpr)
 sys.stdout.write(
     "Solutions are: \n\t"
-    + ", \n\t".join(list(set(lib.formatter.formatter(i) for i in solution)))
+    + ", \n\t".join(list(set(main.lib.formatter.formatter(i) for i in solution)))
     + "\n"
 )
