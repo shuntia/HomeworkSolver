@@ -41,10 +41,11 @@ if(args.app):
 target = input("Please enter your expression/equasion to solve: ")
 # eqtype=solver.find_type(parsedexpr)
 if(os.path.isfile(target)):
-    expression = recognition.recognize(target)
-    sys.stdout.write("recognized: "+str(expression)+"\n")
     import recognization as recognition
     from PIL import Image
+    expression = recognition.recognize(target)
+    sys.stdout.write("recognized: "+str(expression)+"\n")
+    
 else:
     expression=target
 if "=" in expression:
