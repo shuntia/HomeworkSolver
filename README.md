@@ -21,3 +21,4 @@ to activate the server to use an iPhone.
 ## How to use CLI
 
 type in the polynomial, or a path to an image containing the picture of a function or expression.
+Use `source\math1.jpg` for testing.
