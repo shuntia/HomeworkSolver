@@ -6,8 +6,7 @@ import lib.calc as calc
 import lib.solver as solver
 import lib.formatter as form
 import mpmath
-import recognization as recognition
-from PIL import Image
+
 
 mpmath.mp.prec = 3333
 mpmath.mp.dps = 1000
@@ -44,6 +43,8 @@ target = input("Please enter your expression/equasion to solve: ")
 if(os.path.isfile(target)):
     expression = recognition.recognize(target)
     sys.stdout.write("recognized: "+str(expression)+"\n")
+    import recognization as recognition
+    from PIL import Image
 else:
     expression=target
 if "=" in expression:
