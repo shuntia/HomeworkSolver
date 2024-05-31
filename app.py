@@ -21,7 +21,7 @@ def solve_expression():
   try:
     expression = request.form['expression']
     # Use the solving function to get the result
-    return jsonify(solving(expression))
+    return solving(expression)
   except Exception as e:
     return jsonify({"error": str(e)}), 500
 
