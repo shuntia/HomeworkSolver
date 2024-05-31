@@ -1,11 +1,13 @@
 import sys
 import os
 import argparse
-import lib.parser
-import lib.calc
-import lib.solver
-import lib.formatter
+import lib.parser as parser
+import lib.calc as calc
+import lib.solver as solver
+import lib.formatter as form
 import mpmath
+import recognization as recognition
+from PIL import Image
 
 mpmath.mp.prec = 3333
 mpmath.mp.dps = 1000
@@ -27,14 +29,21 @@ pars.add_argument(
     default=False,
 )
 args = pars.parse_args()
-expression = input("Please enter your expression/equasion to solve: ")
-parsedexpr = lib.parser.parse(expression)
+target = input("Please enter your expression/equasion to solve: ")
 # eqtype=solver.find_type(parsedexpr)
+if(os.path.isfile(target)):
+    expression = recognition.recognize(target)
+    sys.stdout.write("recognized: "+str(expression)+"\n")
+else:
+    expression=target
+if "=" in expression:
+    expression=expression[expression.find("=")+1:]
+parsedexpr = parser.parse(expression)
 if(args.verbose):
     sys.stdout.write(str(parsedexpr)+"\n")
-solution = lib.solver.solve(parsedexpr)
+solution = solver.solve(parsedexpr)
 sys.stdout.write(
     "Solutions are: \n\t"
-    + ", \n\t".join(list(set(lib.formatter.formatter(i) for i in solution)))
+    + ", \n\t".join(list(set(form.formatter(i) for i in solution)))
     + "\n"
 )

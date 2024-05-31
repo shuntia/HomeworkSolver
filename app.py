@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from PIL import Image
-from main.recognization import recognize  # Importing the recognize function from ./main/recognization.py
-from main.solving_main import solving     # Importing the solving function from ./main/solving_main.py
+from recognization import recognize  # Importing the recognize function from ./main/recognization.py
+from solving_main import solving     # Importing the solving function from ./main/solving_main.py
 
 app = Flask(__name__)
 
