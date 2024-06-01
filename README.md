@@ -6,6 +6,7 @@ Image recognition is included.
 
 Set up the enviroment
 Use env/
+  
   Mac:
   ```sh
   cd ~/path-to-HomeworkSolver/env/mac/ocr_env.sh
