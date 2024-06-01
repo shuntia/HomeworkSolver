@@ -4,6 +4,15 @@ Image recognition is included.
 
 ## CLI
 
+Set up the enviroment
+Use env\
+  Mac:
+  ```sh
+  cd ~/path-to-HomeworkSolver/env/mac/ocr_env.sh
+  chmod +x script.sh
+  source script.sh
+  ```
+
 Execute
 ```sh
 $ python main.py
